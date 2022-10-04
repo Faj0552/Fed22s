@@ -1,170 +1,207 @@
 @use "mixins";
 @use "variables" as v;
-a{
-    @include mixins.a-link;
-}
-.navbar{
-   @include mixins.nav-bar;
-    background-color: rgba(240, 255, 255, 0.129); 
 
-}
-.toggle-button{
-   @include mixins.toggle-button;
-}
-.toggle-button .bar{
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
 
-}
-.navbar-links{
-    font-size: 1.5rem;
-    display: none;
-    flex-direction:column;
-    align-items: center;
-    width: 100%;
-    justify-content:flex-end; 
-   
-}
-.navbar-links.active{
-    display: flex;
- }
-
-header{
+  .top-nav {
+    position:absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url(/bilder/negative-space-black-forest-dawn.jpg);
-    background-size: cover;
-    background-position: bottom;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-.header-content{
-    margin-bottom:15px ;
-    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    background-color: #dee5e71c;
+    color: v.$fontcolor;
+    height: 50px;
+  }
+  .menu {
+    flex-direction: row;
+    @include mixins.menu;
+    li {
+      margin: 0 1rem;
+      overflow: hidden;
+      @include mixins.for-mobile{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0.5em 0;
+        width: 100%;
+        color: v.$fontcolor;
+        background-color: rgba(92, 92, 92, 0.133);
+        a:hover{
+          text-decoration: none;
+        }
+
+      }
+      a{
+        text-decoration: none;
+        color:v.$fontcolor;
+        font-size: large;
+        &:hover{
+          text-decoration: underline;
+        } 
+      }
+      }
+      @include mixins.for-mobile{
+      position: absolute;
+      top: 0;
+      margin-top: 50px;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center; 
+      }
+  }
+  .menu-button-container {
+    display: none;
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    color: white;
-    line-height: 4em; 
-   p{
-    font-size: 1.2rem;
-   }
-}
+    @include mixins.for-mobile{
+    display: flex;
+    }
+  }
+  
+  #menu-toggle {
+    display: none;
+    @include mixins.for-mobile{
+      &~ .menu li {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      &:checked ~ .menu li {
+        height: 2.5em;
+        padding: 0.5em;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
 
-.header-item{
+    }
+  }
+  
+  .menu-button,
+  .menu-button::before,
+  .menu-button::after {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+  }
+  
+  .menu-button::before {
+    content: '';
+    margin-top: -8px;
+  }
+  
+  .menu-button::after {
+    content: '';
+    margin-top: 8px;
+  }
+  
+  #menu-toggle:checked + .menu-button-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+  }
+  
+  #menu-toggle:checked + .menu-button-container .menu-button {
+    background: rgba(128, 128, 128, 0.144);
+  }
+  
+  #menu-toggle:checked + .menu-button-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+  }
+  a{
+    color: v.$fontcolor;;
+  }
+  header{
+    display: flex;
+    background: url(/bilder/negative-space-black-forest-dawn.jpg) no-repeat center center/cover;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index:-1;
+  }
+  .header-content{
+    color: v.$fontcolor;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    position:relative;
+    line-height: 60px;
+  }
+  .header-item{
     font-size: 1.8rem;
     margin-top: 10rem;
-    color: black;
+    margin-bottom: -10rem;
+    color: v.$fontcolor;
+    
 }
-section{
-    width: 100vw;
-    margin-top: 2rem;
+section h2{
+  text-align: center;
 }
 .container{
-    display: grid;
-    grid-template: 1fr;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:v.$margintop;
+  margin-bottom: 2rem;
+  img{
+    @include mixins.profilepic;
+    }
+    @include mixins.for-mobile{
     width: 100%;
-    text-align: center;
+    grid-template-columns: 1fr;
+
+  }
+}
+
+  .content_text{
+    background-color: rgb(156, 156, 156);
+    width: 400px;
+    height: auto;
+    margin-top: v.$margintop;
+    border-radius: 0.5em;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1rem;
     margin-bottom: 2rem;
-}
-.container-content{
-    margin: 2em;
-}
-.container {
-    img{
-    max-width: 50%;
-    border-radius: 50%;
-    }
-}
-.container-content--text{
-    background-color: rgb(156, 156, 156);
-    width: auto;
-    height: auto;
-    margin-top: 1rem;
-    border-radius: 0.5em;
     padding-top: 1em;
     padding: 1.5rem;
     text-align: justify;
-    justify-content: center;   
+    span{
+      font-size: 30px;
+    } 
+    @include mixins.for-mobile{
+      width: 350px;
+      height: auto;
+    } 
 }
-.comma{
-    width: 20px;
-}
-nav>img{
-    
-    font-size: 20px;
-    position: absolute;
-    top:30px;
-    right: 30px;
-    width: 40px;
-    cursor: pointer;
-}
-
-section h2{
+  footer{
+  color: v.$fontcolor;;
+  background-color: black;
+  @include mixins.footer;
+  @include mixins.for-mobile{
+    height: 100vh;
     text-align: center;
+    padding: 20px;
+    flex-direction: column;
+
+  }
+  
 }
-footer{
-    @include mixins.footer;
-    background-color: black;
-    color: white;   
-}
-@media screen and (min-width:768px){
-    .navbar{
-        padding: 20px;
-        margin-top: 0px;
-        
-    }
-    .navbar-links{
-        display: flex;
-        flex-direction:row;
-        font-size: 1.2rem;
-       
-        
-        
-    }
-    .navbar-links li{
-        margin: 0 30px;
-        &:hover{
-            text-decoration: underline;
-            color: white;
-        }
-    }
-    .toggle-button{
-        display: none;
-    }
-    .navbar-links li:hover{
-        
-        text-align: right;
-        background-color: transparent;
-    }
-    .navbar-links.active{
-        display: none;
-     }
-    .container{
-       grid-template-columns: 1fr 1fr;
-       width: 100%;
-    }
-    .container-content--text{
-        width: 450px;
-        height: auto;
-        margin-left: auto;
-        margin-right: auto;
-        
-    }
-   
-    footer{
-        flex-direction: row;
-        text-align: left;
-        height: 10%;
-        a{
-            margin-right: 0.3em;
-        }
-    }
-    
-}
+  

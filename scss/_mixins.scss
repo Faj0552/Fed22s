@@ -1,32 +1,27 @@
 @mixin footer{
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-    padding: 20px;
+    height: 15%;
+    text-align: left;
+    padding: 15px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
-}
-@mixin toggle-button{
-    position: absolute;
-    top: .75rem;
-    right: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-
-}
-@mixin a-link {
-    text-decoration: none;
-    color: white;
     
 }
-@mixin nav-bar{
-    position: absolute;
-    top:0;
-    left:0;
+@mixin profilepic {
+    max-width: 50%;
+    border-radius: 50%; 
+} 
+@mixin menu{
     display: flex;
-    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
+@mixin for-mobile{
+    @media (max-width: 768px){
+        @content;
+    }
+        
+    }
+
+
