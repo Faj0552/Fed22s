@@ -152,8 +152,15 @@ section h2{
   &_text{
     @include mixins.text-box;
     span{
-      font-size: 30px;
+      position:absolute;
+      font-size: 35px;
+      transform: rotate(180deg);
+      margin-top: -1rem;
     } 
+    p{
+      position: relative;
+      text-indent: 2rem;
+    }
     @include mixins.for-mobile{
       width: 350px;
       height: auto;
@@ -172,9 +179,13 @@ section h2{
   color: v.$fontcolor;;
   background-color: black;
   @include mixins.footer;
+   a{
+    margin-right: 0.5em;
+  }
   @include mixins.for-mobile{
     height: 100vh;
-    text-align: center;
+    text-align: left;
+    align-items: center;
     padding: 20px;
     flex-direction: column;
 
