@@ -3,16 +3,11 @@
 
 
   .top-nav {
-    position:absolute;
-    width: 100%;
-    height: 100vh;
-    display: flex;
+    @include mixins.navmenu;
     flex-direction: row;
-    align-items: center;
-    justify-content: right;
     background-color: #dee5e71c;
     color: v.$fontcolor;
-    height: 50px;
+   
   }
   .menu {
     flex-direction: row;
@@ -20,6 +15,7 @@
     li {
       margin: 0 1rem;
       overflow: hidden;
+      
       @include mixins.for-mobile{
         display: flex;
         justify-content: center;
@@ -33,14 +29,7 @@
         }
 
       }
-      a{
-        text-decoration: none;
-        color:v.$fontcolor;
-        font-size: large;
-        &:hover{
-          text-decoration: underline;
-        } 
-      }
+    
       }
       @include mixins.for-mobile{
       position: absolute;
@@ -160,6 +149,16 @@ section h2{
   margin-right: auto;
   margin-top:v.$margintop;
   margin-bottom: 2rem;
+  &_text{
+    @include mixins.text-box;
+    span{
+      font-size: 30px;
+    } 
+    @include mixins.for-mobile{
+      width: 350px;
+      height: auto;
+    } 
+  }
   img{
     @include mixins.profilepic;
     }
@@ -168,27 +167,6 @@ section h2{
     grid-template-columns: 1fr;
 
   }
-}
-
-  .content_text{
-    background-color: rgb(156, 156, 156);
-    width: 400px;
-    height: auto;
-    margin-top: v.$margintop;
-    border-radius: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    padding-top: 1em;
-    padding: 1.5rem;
-    text-align: justify;
-    span{
-      font-size: 30px;
-    } 
-    @include mixins.for-mobile{
-      width: 350px;
-      height: auto;
-    } 
 }
   footer{
   color: v.$fontcolor;;
