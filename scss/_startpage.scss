@@ -4,7 +4,7 @@
 
   .top-nav {
     position:absolute;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -152,7 +152,6 @@ section h2{
   text-align: center;
 }
 .container{
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
