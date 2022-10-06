@@ -1,21 +1,13 @@
 @use "mixins";
 @use "variables" as v;
-
-
-  .top-nav {
-    @include mixins.navmenu;
-    flex-direction: row;
-    background-color: #dee5e71c;
-    color: v.$fontcolor;
-   
-  }
   .menu {
-    flex-direction: row;
     @include mixins.menu;
     li {
       margin: 0 1rem;
       overflow: hidden;
-      
+      a:hover{
+        text-decoration: underline;
+      }
       @include mixins.for-mobile{
         display: flex;
         justify-content: center;
@@ -177,7 +169,6 @@ section h2{
 }
   footer{
   color: v.$fontcolor;;
-  background-color: black;
   @include mixins.footer;
    a{
     margin-right: 0.5em;

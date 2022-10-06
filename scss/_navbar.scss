@@ -1,0 +1,5 @@
+@use "mixins";
+.top-nav {
+    @include mixins.navmenu;
+    color: #fff; 
+  }
