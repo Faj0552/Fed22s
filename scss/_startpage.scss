@@ -9,13 +9,14 @@
         text-decoration: underline;
       }
       @include mixins.for-mobile{
+        font-size:1.2rem;
         display: flex;
         justify-content: center;
         margin: 0;
         padding: 0.5em 0;
         width: 100%;
         color: v.$fontcolor;
-        background-color: rgba(92, 92, 92, 0.133);
+        background-color: rgba(92, 92, 92, 0.174);
         a:hover{
           text-decoration: none;
         }
